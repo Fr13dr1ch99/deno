@@ -33,7 +33,7 @@ const illegalConstructorKey = Symbol("illegalConstructorKey");
  * @property {boolean} partial
  */
 
-/** @type {ReadonlyArray<"read" | "write" | "net" | "env" | "sys" | "run" | "ffi" | "hrtime">} */
+/** @type {ReadonlyArray<"read" | "write" | "net" | "env" | "sys" | "run" | "hrtime">} */
 const permissionNames = [
   "read",
   "write",
@@ -41,7 +41,6 @@ const permissionNames = [
   "env",
   "sys",
   "run",
-  "ffi",
   "hrtime",
 ];
 
@@ -129,7 +128,7 @@ const statusCache = new SafeMap();
 function cache(desc, rawStatus) {
   let { name: key } = desc;
   if (
-    (desc.name === "read" || desc.name === "write" || desc.name === "ffi") &&
+    (desc.name === "read" || desc.name === "write") &&
     ReflectHas(desc, "path")
   ) {
     key += `-${desc.path}&`;
@@ -180,7 +179,7 @@ function isValidDescriptor(desc) {
  */
 function formDescriptor(desc) {
   if (
-    desc.name === "read" || desc.name === "write" || desc.name === "ffi"
+    desc.name === "read" || desc.name === "write"
   ) {
     desc.path = pathFromURL(desc.path);
   } else if (desc.name === "run") {
@@ -266,7 +265,7 @@ function serializePermissions(permissions) {
   if (typeof permissions == "object" && permissions != null) {
     const serializedPermissions = {};
     for (
-      const key of new SafeArrayIterator(["read", "write", "run", "ffi"])
+      const key of new SafeArrayIterator(["read", "write", "run"])
     ) {
       if (ArrayIsArray(permissions[key])) {
         serializedPermissions[key] = ArrayPrototypeMap(

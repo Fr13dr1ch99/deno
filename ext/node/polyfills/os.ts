@@ -174,6 +174,7 @@ export function homedir(): string | null {
     case "windows":
       return Deno.env.get("USERPROFILE") || null;
     case "linux":
+    case "android":
     case "darwin":
     case "freebsd":
     case "openbsd":
@@ -306,6 +307,8 @@ export function type(): string {
       return "FreeBSD";
     case "openbsd":
       return "OpenBSD";
+    case "android":
+      return "Android"
     default:
       throw Error("unreachable");
   }

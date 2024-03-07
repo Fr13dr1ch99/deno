@@ -7,7 +7,6 @@ members = [
   "cli",
   "cli/napi/sym",
   "runtime",
-  "test_ffi",
   "test_napi",
   "test_util",
   "ext/broadcast_channel",
@@ -15,7 +14,6 @@ members = [
   "ext/console",
   "ext/crypto",
   "ext/fetch",
-  "ext/ffi",
   "ext/fs",
   "ext/http",
   "ext/io",
@@ -57,7 +55,6 @@ deno_cache = { version = "0.50.0", path = "./ext/cache" }
 deno_console = { version = "0.118.0", path = "./ext/console" }
 deno_crypto = { version = "0.132.0", path = "./ext/crypto" }
 deno_fetch = { version = "0.142.0", path = "./ext/fetch" }
-deno_ffi = { version = "0.105.0", path = "./ext/ffi" }
 deno_fs = { version = "0.28.0", path = "./ext/fs" }
 deno_http = { version = "0.113.0", path = "./ext/http" }
 deno_io = { version = "0.28.0", path = "./ext/io" }
@@ -220,8 +217,6 @@ opt-level = 3
 opt-level = 3
 [profile.bench.package.deno_fetch]
 opt-level = 3
-[profile.bench.package.deno_ffi]
-opt-level = 3
 [profile.bench.package.deno_tls]
 opt-level = 3
 [profile.bench.package.deno_websocket]
@@ -291,8 +286,6 @@ opt-level = 3
 [profile.release.package.deno_broadcast_channel]
 opt-level = 3
 [profile.release.package.deno_fetch]
-opt-level = 3
-[profile.release.package.deno_ffi]
 opt-level = 3
 [profile.release.package.deno_tls]
 opt-level = 3

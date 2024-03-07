@@ -1,29 +1,11 @@
-[target.x86_64-pc-windows-msvc]
-rustflags = ["-C", "target-feature=+crt-static"]
+[target.aarch64-linux-android]
+ar = "/home/drmchack/Development/deno_binding/NDK/arm64/bin/aarch64-linux-android-ar"
+linker = "/home/drmchack/Development/deno_binding/NDK/arm64/bin/aarch64-linux-android-clang"
 
-[target.'cfg(all(windows, debug_assertions))']
-rustflags = [
-  "-C",
-  "target-feature=+crt-static",
-  "-C",
-  # increase the stack size to prevent overflowing the
-  # stack in debug when launching sub commands
-  "link-arg=/STACK:4194304",
-]
+[target.armv7-linux-androideabi]
+ar = "/home/drmchack/Development/deno_binding/NDK/arm/bin/arm-linux-androideabi-ar"
+linker = "/home/drmchack/Development/deno_binding/NDK/arm/bin/arm-linux-androideabi-clang"
 
-[target.aarch64-apple-darwin]
-rustflags = ["-C", "link-arg=-fuse-ld=lld"]
-
-[target.'cfg(all())']
-rustflags = [
-  "-D",
-  "clippy::all",
-  "-D",
-  "clippy::await_holding_refcell_ref",
-  "-D",
-  "clippy::missing_safety_doc",
-  "-D",
-  "clippy::undocumented_unsafe_blocks",
-  "--cfg",
-  "tokio_unstable",
-]
+[target.i686-linux-android]
+ar = "/home/drmchack/Development/deno_binding/NDK/x86/bin/i686-linux-android-ar"
+linker = "/home/drmchack/Development/deno_binding/NDK/x86/bin/i686-linux-android-clang"

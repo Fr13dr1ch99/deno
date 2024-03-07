@@ -1464,13 +1464,6 @@ impl deno_napi::NapiPermissions for PermissionsContainer {
   }
 }
 
-impl deno_ffi::FfiPermissions for PermissionsContainer {
-  #[inline(always)]
-  fn check_partial(&mut self, path: Option<&Path>) -> Result<(), AnyError> {
-    self.0.lock().ffi.check_partial(path)
-  }
-}
-
 impl deno_kv::sqlite::SqliteDbHandlerPermissions for PermissionsContainer {
   #[inline(always)]
   fn check_read(&mut self, p: &Path, api_name: &str) -> Result<(), AnyError> {

@@ -46,7 +46,6 @@ deno_console.workspace = true
 deno_core.workspace = true
 deno_crypto.workspace = true
 deno_fetch.workspace = true
-deno_ffi.workspace = true
 deno_fs = { workspace = true, features = ["sync_fs"] }
 deno_http.workspace = true
 deno_io.workspace = true
@@ -73,7 +72,6 @@ deno_console.workspace = true
 deno_core.workspace = true
 deno_crypto.workspace = true
 deno_fetch.workspace = true
-deno_ffi.workspace = true
 deno_fs = { workspace = true, features = ["sync_fs"] }
 deno_http.workspace = true
 deno_io.workspace = true

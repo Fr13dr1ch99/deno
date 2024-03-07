@@ -431,7 +431,6 @@ impl WebWorker {
         options.broadcast_channel.clone(),
         unstable,
       ),
-      deno_ffi::deno_ffi::init_ops_and_esm::<PermissionsContainer>(unstable),
       deno_net::deno_net::init_ops_and_esm::<PermissionsContainer>(
         options.root_cert_store_provider.clone(),
         unstable,

@@ -63,7 +63,8 @@ mod priority {
   #[cfg(any(
     target_os = "macos",
     target_os = "freebsd",
-    target_os = "openbsd"
+    target_os = "openbsd",
+    target_os = "android"
   ))]
   #[allow(non_camel_case_types)]
   type priority_t = i32;

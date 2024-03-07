@@ -65,15 +65,6 @@ mod startup_snapshot {
     }
   }
 
-  impl deno_ffi::FfiPermissions for Permissions {
-    fn check_partial(
-      &mut self,
-      _path: Option<&Path>,
-    ) -> Result<(), deno_core::error::AnyError> {
-      unreachable!("snapshotting!")
-    }
-  }
-
   impl deno_napi::NapiPermissions for Permissions {
     fn check(
       &mut self,
@@ -226,7 +217,6 @@ mod startup_snapshot {
         deno_broadcast_channel::InMemoryBroadcastChannel::default(),
         false, // No --unstable.
       ),
-      deno_ffi::deno_ffi::init_ops_and_esm::<Permissions>(false),
       deno_net::deno_net::init_ops_and_esm::<Permissions>(
         None, false, // No --unstable.
         None,

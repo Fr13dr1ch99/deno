@@ -340,7 +340,6 @@ fn create_cli_snapshot(snapshot_path: PathBuf) -> CreateSnapshotOutput {
       deno_broadcast_channel::InMemoryBroadcastChannel::default(),
       false, // No --unstable.
     ),
-    deno_ffi::deno_ffi::init_ops::<PermissionsContainer>(false),
     deno_net::deno_net::init_ops::<PermissionsContainer>(
       None, false, // No --unstable.
       None,
@@ -400,12 +399,9 @@ fn main() {
   // Host snapshots won't work when cross compiling.
   let target = env::var("TARGET").unwrap();
   let host = env::var("HOST").unwrap();
-  if target != host {
-    panic!("Cross compiling with snapshot is not supported.");
-  }
 
   let symbols_path = std::path::Path::new("napi").join(
-    format!("generated_symbol_exports_list_{}.def", env::consts::OS).as_str(),
+    format!("generated_symbol_exports_list_{}.def", "linux").as_str()
   )
   .canonicalize()
   .expect(

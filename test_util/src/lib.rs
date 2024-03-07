@@ -200,6 +200,8 @@ pub fn platform_dir_name() -> &'static str {
     "mac"
   } else if cfg!(target_os = "windows") {
     "win"
+  } else if cfg!(target_os = "android") {
+    "android"
   } else {
     unreachable!()
   }
